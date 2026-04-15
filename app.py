@@ -14,8 +14,9 @@ def verify():
     challenge = request.args.get('hub.challenge')
 
     if token == VERIFY_TOKEN:
-        return challenge
-    return 'wrong token'
+        return challenge, 200
+
+    return 'Wrong token', 403
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
